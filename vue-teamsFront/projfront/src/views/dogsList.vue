@@ -11,7 +11,7 @@
     <tbody>
       <!-- V-for for dogsList on tr below-->
       <tr v-for="dog in dogs" :key="dog.id_dog">
-        <td>{{ dog.photo }}</td>
+        <td> <img :src ="dog.photo"></td>
         <td>{{ dog.race }}</td>
         <!-- @click button go to dogCard component for details-->
         <td>
@@ -28,6 +28,7 @@ import axios from "axios";
 
 export default {
   name: "dogsList",
+
   data: () => ({
     dogs: [],
   }),
