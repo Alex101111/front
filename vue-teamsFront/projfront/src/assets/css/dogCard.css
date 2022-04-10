@@ -38,15 +38,15 @@
 }
 .profile .image {
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 86px;
+  height: 86px;
   margin: 38px auto 0 auto;
 }
 .profile .image .circle-1, .profile .image .circle-2 {
   position: absolute;
   box-sizing: border-box;
-  width: 76px;
-  height: 76px;
+  width: 86px;
+  height: 86px;
   top: -3px;
   left: -3px;
   border-width: 1px;
@@ -56,8 +56,8 @@
   transition: all 1.5s ease-in-out;
 }
 .profile .image .circle-2 {
-  width: 82px;
-  height: 82px;
+  width: 92px;
+  height: 92px;
   top: -6px;
   left: -6px;
   border-color: #786450 transparent #786450 #786450;
@@ -74,7 +74,7 @@
   transform: rotate(360deg);
 }
 .profile .image:hover .circle-2 {
-  transform: rotate(-360deg);
+transform: rotate(-360deg);
 }
 .profile .name {
   font-size: 15px;
@@ -136,3 +136,6 @@
 .stats .parameter {
   font-size: 11px;
 }
+
+.dogImage{height: 86px;
+  width: 86px;}

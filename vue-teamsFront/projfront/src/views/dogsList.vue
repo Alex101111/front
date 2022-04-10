@@ -17,6 +17,12 @@
         <td>
           <button @click="checkThisDog(dog.id_dog)">En savoir plus</button>
         </td>
+          <td>
+          <button @click="editThisDog(dog.id_dog)">Edit</button>
+        </td>
+         <td>
+          <button @click="deleteThisDog(dog.id_dog)">delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -34,8 +40,14 @@ export default {
   }),
   methods: {
     checkThisDog(dogsId) {
-      this.$router.push({ name: "dogCard", params: { cardId: dogsId } });
+      this.$router.push({ name: "dogCard",params:{ cardId: dogsId } });
       console.log("test");
+    },
+    editThisDog(dogsId){
+      this.$router.push({name:"updateDog", params:{ id_dog:dogsId}})
+    },
+    deleteThisDog(dogsId){
+      this.$router.push({name:"deleteDog", params:{ id_dog:dogsId}})
     },
   },
 

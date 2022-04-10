@@ -6,34 +6,36 @@
 		<div class="profile">
 			<div class="image">
 				<div class="circle-1"></div>
-				<div class="circle-2"></div>
-				<img src="https://100dayscss.com/codepen/jessica-potter.jpg" width="70" height="70" alt="Jessica Potter">
+				<div class="circle-2">	<img class='dogImage' :src="dog.photo"></div>
+			
 			</div>
 			
-			<div class="name">Jessica Potter</div>
-			<div class="job">Visual Artist</div>
-			
-			<div class="actions">
-				<button class="btn">Follow</button>
-				<button class="btn">Message</button>
+			<div class="name">{{dog.race}}</div>
+	
+				<div class="box">
+                    <br>
+                    <br>
+				<span class="value">{{dog.caractere}}</span>
+              
 			</div>
 		</div>
 		
 		<div class="stats">
 			<div class="box">
-				<span class="value">523</span>
-				<span class="parameter">Posts</span>
+				<span class="value">type de poil</span>
+				<span class="parameter">{{dog.type_de_poil}}</span>
 			</div>
 			<div class="box">
-				<span class="value">1387</span>
-				<span class="parameter">Likes</span>
+				<span class="value">gabarit</span>
+				<span class="parameter">{{dog.gabarit}}</span>
 			</div>
 			<div class="box">
-				<span class="value">146</span>
-				<span class="parameter">Follower</span>
+				<span class="value">origine</span>
+				<span class="parameter">{{dog.origine}}</span>
 			</div>
 		</div>
   </div>
+
 </div>
 </template>
 
@@ -46,11 +48,11 @@ data:()=>({
 }),
 async created()
 {
-const {cardId} =this.$route.parmas
-const apiDogs= "http://localhost:8000/api/read.php"+cardId
+const {cardId} = this.$route.params
+const apiDogs= "http://localhost:8000/api/single_read.php/?id_dog="+cardId
 const oneDog = await axios.get(apiDogs)
 this.dog = oneDog.data
-
+console.log(oneDog)
 }
 }
 

@@ -1,15 +1,21 @@
 <template>
-  <form 
-  @submit.prevent="submitDog"
-   action="#">
+  <form @submit.prevent="submitDog" action="#">
     <div class="row gtr-uniform">
       <div class="col-12">
-        <input v-model="dog.race" type="text" name="race" id="name" placeholder="Nom de la race" />
+        <input
+          v-model="dog.race"
+          type="text"
+          name="race"
+          id="name"
+          placeholder="Nom de la race"
+        />
       </div>
       <div class="col-12">
         <select v-model="dog.type_de_poil">
           <!-- Link of angle-down for VueJS <font-awesome-icon icon="fa-solid fa-angle-down" /> -->
-          <option value="type_de_poil" selected="true" disabled>Type de poil</option>
+          <option value="type_de_poil" selected="true" disabled>
+            Type de poil
+          </option>
           <option value="Soyeux">Soyeux</option>
           <option value="Court">Court</option>
           <option value="Long">Long</option>
@@ -50,7 +56,7 @@
         ></textarea>
       </div>
       <div class="col-12">
-        <input  type="text" placeholder="put image link" v-model="dog.image" />
+        <input type="text" placeholder="put image link" v-model="dog.image" />
         <br />
         <br />
         <ul class="actions">
@@ -63,44 +69,40 @@
     </div>
   </form>
 </template>
-             <!-- <input type="file" accept="image/*" @change="test"> -->
 
 <script>
-
-import axios from 'axios'
-
-
+import axios from "axios";
 export default {
-  name: 'createDog',
-  data(){
-     return{
-dog: {
-  race:"",
-  type_de_poil:"",
-  gabarit:"",
-  origine:"",
-  caractere:"",
-  image:""
-}
-     }
+  name: "updateDog",
+  data() {
+    return {
+      dog: {
+        race: "",
+        type_de_poil: "",
+        gabarit: "",
+        origine: "",
+        caractere: "",
+        image: "" 
+      },
+    };
   },
-  methods:{
- submitDog(){
- axios.post("http://localhost:8000/api/create.php/",this.dog)
-     .then(function () {
+methods:{
+  async submitDog() {
+  
+    const id_dog = this.$route.params;
+    console.log(id_dog)
+    console.log(this.dog);
+    const updateApi ="http://localhost:8000/api/update.php/";
+    await axios.put(updateApi,id_dog,this.dog)
+        .then(function () {
        
-    this.$route.go({name:"dogsList"});
+
     console.log('function works !')
-  })
-    }
+        })
+  },
   }
-
-
 };
 </script>
 
-
 <style>
-@import "@/assets/css/main.css"
-
 </style>
